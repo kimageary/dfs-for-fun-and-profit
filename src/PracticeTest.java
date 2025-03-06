@@ -251,6 +251,24 @@ public class PracticeTest {
   }
 
   @Test
+  public void testHasStrictlyIncreasingPath_FalseForNoPath() {
+    Practice practice = new Practice();
+    GraphData graph = buildComplexGraph();
+    // There is no path from 45 to 56.
+    assertFalse(practice.hasStrictlyIncreasingPath(graph.v45, graph.v56),
+        "Expected no strictly increasing path from vertex 45 to vertex 56");
+  }
+
+  @Test
+  public void testHasStrictlyIncreasingPath_FalseForNonIncreasingPath() {
+    Practice practice = new Practice();
+    GraphData graph = buildComplexGraph();
+    // There is no strictly increasing path from 67 to 78.
+    assertFalse(practice.hasStrictlyIncreasingPath(graph.v67, graph.v78),
+        "Expected no strictly increasing path from vertex 67 to vertex 78");
+  }
+
+  @Test
   public void testHasStrictlyIncreasingPath_TrivialPath_ReturnsTrue() {
     Practice practice = new Practice();
     GraphData graph = buildComplexGraph();
