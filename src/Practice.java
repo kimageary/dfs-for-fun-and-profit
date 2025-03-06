@@ -57,7 +57,7 @@ public class Practice {
    * @param vertex The starting vertex for the traversal.
    * @return A set containing all reachable leaf vertices, or an empty set if vertex is null.
    */
-  public <T> Set<Vertex<T>> leaves(Vertex<Integer> vertex) {
+  public <T> Set<Vertex<T>> leaves(Vertex<T> vertex) {
     return null;
   }
 
