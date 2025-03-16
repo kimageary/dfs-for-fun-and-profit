@@ -141,6 +141,26 @@ public class Practice {
    * @throws NullPointerException if either start or end is null.
    */
   public boolean hasStrictlyIncreasingPath(Vertex<Integer> start, Vertex<Integer> end) {
+    if(start == null|| end == null){
+      throw new NullPointerException("Start or end cannot be null.");
+    }
+    
+    Set<Vertex<Integer>> visited = new HashSet<>();
+    return dfs(start, end, visited, Integer.MIN_VALUE);
+  }
+  private boolean dfs(Vertex<Integer> current, Vertex<Integer> end, Set<Vertex<Integer>> visited, int prevValue){
+    if(current == null|| visited.contains(current)) return false;
+
+    if(current.data < prevValue) return false;
+
+    if(current == end) return true;
+    visited.add(current);
+
+    for(Vertex<Integer> neighbor : current.neighbors){
+      if(dfs(neighbor, end, visited, current.data)){
+        return true;
+      }
+    }
     return false;
   }
 }
